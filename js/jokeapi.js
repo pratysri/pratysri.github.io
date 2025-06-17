@@ -4,6 +4,8 @@ async function fetchJoke() {
         const data = await response.json();
         const jokeContainer = document.getElementById('joke-container');
         
+        if (!jokeContainer) return;
+        
         if (data.type === 'single') {
             jokeContainer.innerHTML = `<p>${data.joke}</p>`;
         } else {
@@ -13,7 +15,10 @@ async function fetchJoke() {
             `;
         }
     } catch (error) {
-        document.getElementById('joke-container').innerHTML = '<p>Failed to load joke. Please try again later.</p>';
+        const jokeContainer = document.getElementById('joke-container');
+        if (jokeContainer) {
+            jokeContainer.innerHTML = '<p>Failed to load joke. Please try again later.</p>';
+        }
     }
 }
 

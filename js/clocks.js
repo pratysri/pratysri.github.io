@@ -9,7 +9,7 @@ function displayTime() {
 function initAnalogClock() {
     const canvas = document.getElementById('analog-clock');
     const ctx = canvas.getContext('2d');
-    const radius = canvas.height / 2;
+    let radius = canvas.height / 2;
     ctx.translate(radius, radius);
     radius = radius * 0.90;
 
@@ -51,9 +51,9 @@ function initAnalogClock() {
 
     function drawTime(ctx, radius) {
         const now = new Date();
-        const hour = now.getHours();
-        const minute = now.getMinutes();
-        const second = now.getSeconds();
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
         
         hour = hour % 12;
         hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));

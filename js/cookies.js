@@ -21,7 +21,7 @@ function checkVisitor() {
     const lastVisit = getCookie("lastVisit");
     const now = new Date().toISOString();
     
-    if (lastVisit === "") {
+    if (!lastVisit) {
         document.getElementById('visitor-counter').innerHTML = 
             '<p class="text-light">Welcome! This is your first visit.</p>';
     } else {
@@ -34,7 +34,34 @@ function checkVisitor() {
     setCookie("lastVisit", now, 365);
 }
 
-document.addEventListener('DOMContentLoaded', checkVisitor);
+function displayLastVisit() {
+    const lastVisit = getCookie("lastVisit");
+    const lastVisitDiv = document.getElementById('last-visit');
+    
+    if (lastVisitDiv) {
+        if (lastVisit) {
+            const lastVisitDate = new Date(lastVisit);
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            const formattedDate = lastVisitDate.toLocaleDateString('en-US', options);
+            lastVisitDiv.textContent = `Your last visit was at ${formattedDate}`;
+        } else {
+            lastVisitDiv.textContent = 'Welcome to my website!';
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkVisitor();
+    displayLastVisit();
+});
 
 const cookieConsent = document.getElementById('cookie-consent');
 const acceptCookies = document.getElementById('accept-cookies');
