@@ -43,6 +43,31 @@ document.addEventListener('DOMContentLoaded', checkVisitor);
 const cookieConsent = document.getElementById('cookie-consent');
 const acceptCookies = document.getElementById('accept-cookies');
 
+function setLastVisit() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+    localStorage.setItem('lastVisit', formattedDate);
+}
+
+function displayLastVisit() {
+    const lastVisit = localStorage.getItem('lastVisit');
+    if (lastVisit) {
+        const lastVisitDiv = document.getElementById('last-visit');
+        if (lastVisitDiv) {
+            lastVisitDiv.textContent = `Your last visit was at ${lastVisit}`;
+        }
+    }
+}
+
 if (!localStorage.getItem('cookiesAccepted')) {
     cookieConsent.style.display = 'block';
 }
@@ -50,4 +75,9 @@ if (!localStorage.getItem('cookiesAccepted')) {
 acceptCookies.addEventListener('click', () => {
     localStorage.setItem('cookiesAccepted', 'true');
     cookieConsent.style.display = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayLastVisit();
+    setLastVisit();
 }); 
