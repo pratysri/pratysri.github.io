@@ -30,6 +30,7 @@ Through this assignment, I strengthened my understanding of front-end developmen
 #### Personal Profile Website (25 pts)
 
 ![Personal Profile Website](images/screenshots/profile.png)
+
 _Screenshot: Main profile page with navigation and sections_
 
 - Used custom Bootstrap-based theme with modern design
@@ -39,6 +40,7 @@ _Screenshot: Main profile page with navigation and sections_
 #### WAPH Course Page (5 pts)
 
 ![WAPH Course Page](images/screenshots/waph.png)
+
 _Screenshot: WAPH course page with lab summaries_
 
 - Created `waph.html` with a summary of WAPH class, labs, and learning takeaways
@@ -50,7 +52,8 @@ _Screenshot: WAPH course page with lab summaries_
 
 #### CSS Template
 
-![Responsive Design](images/screenshots/responsive.jpg)
+<img src="images/screenshots/responsive.jpg" alt="Responsive Design" width="200" style="height:auto;">
+
 _Screenshot: Website on mobile device_
 
 - Used Bootstrap via CDN for styling
@@ -60,6 +63,7 @@ _Screenshot: Website on mobile device_
 #### Page Tracker
 
 ![Visitor Counter](images/screenshots/counter.png)
+
 _Screenshot: Flag counter widget_
 
 - Embedded [Flag Counter](https://flagcounter.com) to count visitors
@@ -71,6 +75,7 @@ _Screenshot: Flag counter widget_
 #### JavaScript Features (20 pts)
 
 ![Clocks](images/screenshots/clocks.png)
+
 _Screenshot: Digital and analog clocks_
 
 - **Digital Clock:** Added using `setInterval()` to update current time
@@ -81,6 +86,7 @@ _Screenshot: Digital and analog clocks_
 #### API Integration (20 pts)
 
 ![APIs](images/screenshots/apis.png)
+
 _Screenshot: Joke API and XKCD comic sections_
 
 - **Joke API:** Used `https://v2.jokeapi.dev/joke/Programming?safe-mode` to fetch programming jokes
@@ -90,6 +96,7 @@ _Screenshot: Joke API and XKCD comic sections_
 #### Visit Tracking (10 pts)
 
 ![Visit Tracking](images/screenshots/visits.png)
+
 _Screenshot: Last visit display_
 
 - Shows last visit time at the top of the page
