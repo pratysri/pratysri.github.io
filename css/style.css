@@ -151,6 +151,7 @@ body {
     bottom: 0;
     width: 2px;
     background: var(--secondary-color);
+    z-index: 1;
 }
 
 .timeline-content {
@@ -158,6 +159,8 @@ body {
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
 }
 
 /* Skills Grid */
