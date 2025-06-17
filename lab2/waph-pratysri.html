@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WAPH Lab 2 - Pratyush Srivastava</title>
+
+  <link rel="stylesheet" href="https://waph-phung.github.io/style2.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <style>
+    body {
+      background-color: white !important;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    #response {
+      background-color: #ff9800;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    #joke {
+      font-style: italic;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>WAPH Lab 2</h1>
+  <h2>Front-End Web Development Lab</h2>
+  <h2>Instructor: Dr. Phu Phung</h2>
+
+  <p><b>Name:</b> Pratyush Srivastava</p>
+  <p><b>Email:</b> <button class="button" onclick="showhideEmail()">Show My Email</button> <span id="email" style="display: none;">srivaspu@mail.uc.edu</span></p>
+
+  <img src="images/headshot.jpg" alt="Headshot" width="150"><br><br>
+
+  <h3>GET Form</h3>
+  <form action="echo.php" method="GET">
+    <input name="data" placeholder="GET input">
+    <input type="submit" value="Submit">
+  </form>
+
+  <h3>POST Form</h3>
+  <form action="echo.php" method="POST">
+    <input name="data" placeholder="POST input" onkeyup="console.log('Key pressed')">
+    <input type="submit" value="Submit">
+  </form>
+
+  <h3>Inline JavaScript</h3>
+  <div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click to show date</div><br>
+
+  <h3>Digital Clock</h3>
+  <div id="digit-clock"></div><br>
+
+  <h3>Analog Clock</h3>
+  <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas><br><br>
+
+  <h3>Ajax, jQuery, and API Integration</h3>
+  <input id="input-text" placeholder="Type something for Ajax or Age guess"><br>
+
+  <input class="button" type="button" value="Ajax Echo" onclick="getEcho()">
+  <input class="button" type="button" value="jQuery Ajax GET" onclick="jQueryAjax()">
+  <input class="button" type="button" value="jQuery Ajax POST" onclick="jQueryAjaxPost()">
+  <input class="button" type="button" value="Guess Age" onclick="getAge()">
+
+  <div id="response"></div>
+  <div id="joke"></div>
+
+  <script src="email.js"></script>
+
+  <script>
+    function escapeHTML(str) {
+      return str.replace(/[&<>"]/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;',
+        '"': '&quot;', "'": '&#039;'
+      }[c]));
+    }
+
+    function displayTime() {
+      document.getElementById("digit-clock").innerHTML = new Date().toLocaleTimeString();
+    }
+    setInterval(displayTime, 1000);
+
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius *= 0.90;
+    setInterval(drawClock, 1000);
+
+    function drawClock() {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+    }
+
+    function drawFace(ctx, radius) {
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      var grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+      grad.addColorStop(0, '#333');
+      grad.addColorStop(0.5, 'white');
+      grad.addColorStop(1, '#333');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius * 0.1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+      ctx.fillStyle = '#333';
+      ctx.fill();
+    }
+
+    function drawNumbers(ctx, radius) {
+      var ang;
+      var num;
+      ctx.font = radius * 0.15 + "px arial";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      for (num = 1; num <= 12; num++) {
+        ang = num * Math.PI / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-ang);
+      }
+    }
+
+    function drawTime(ctx, radius) {
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+
+      hour %= 12;
+      hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
+      drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+
+      minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+      drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+
+      second = (second * Math.PI / 30);
+      drawHand(ctx, second, radius * 0.9, radius * 0.02);
+    }
+
+    function drawHand(ctx, pos, length, width) {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.moveTo(0, 0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -length);
+      ctx.stroke();
+      ctx.rotate(-pos);
+    }
+
+    function getEcho() {
+      const input = document.getElementById("input-text").value;
+      if (!input || input.trim().length === 0) {
+        alert("Please enter valid input.");
+        return;
+      }
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          document.getElementById("response").innerHTML = "AJAX Echo: " + escapeHTML(this.responseText);
+        }
+      };
+      xhttp.open("GET", "echo.php?data=" + encodeURIComponent(input), true);
+      xhttp.send();
+    }
+
+    function jQueryAjax() {
+      const input = $("#input-text").val();
+      if (!input || input.trim().length === 0) {
+        alert("Please enter valid input.");
+        return;
+      }
+      $.get("echo.php?data=" + encodeURIComponent(input), function (result) {
+        $("#response").html("jQuery GET: " + escapeHTML(result));
+      });
+    }
+
+    function jQueryAjaxPost() {
+      const input = $("#input-text").val();
+      if (!input || input.trim().length === 0) {
+        alert("Please enter valid input.");
+        return;
+      }
+      $.post("echo.php", { data: input }, function (result) {
+        $("#response").html("jQuery POST: " + escapeHTML(result));
+      });
+    }
+
+    function getAge() {
+      const name = document.getElementById("input-text").value;
+      fetch("https://api.agify.io/?name=" + encodeURIComponent(name))
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("response").innerHTML = `Name: ${data.name}, Estimated Age: ${data.age}`;
+        });
+    }
+
+    $(document).ready(function () {
+      $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function (data) {
+        $("#joke").text(data.joke);
+      });
+    });
+  </script>
+</body>
+</html>

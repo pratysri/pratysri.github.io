@@ -1,0 +1,56 @@
+/* Custom styles for the profile website */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navbar customization */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Section spacing */
+section {
+    padding: 2rem 0;
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Clock styling */
+#analog-clock {
+    margin: 2rem auto;
+    max-width: 200px;
+}
+
+/* Joke and XKCD sections */
+#joke-container, #xkcd-container {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    section {
+        padding: 1rem 0;
+    }
+} 
