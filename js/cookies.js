@@ -26,9 +26,18 @@ function checkVisitor() {
             '<p class="text-light">Welcome! This is your first visit.</p>';
     } else {
         const lastVisitDate = new Date(lastVisit);
-        const timeDiff = Math.floor((new Date() - lastVisitDate) / (1000 * 60 * 60 * 24));
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        };
+        const formattedDate = lastVisitDate.toLocaleDateString('en-US', options);
         document.getElementById('visitor-counter').innerHTML = 
-            `<p class="text-light">Welcome back! Your last visit was ${timeDiff} days ago.</p>`;
+            `<p class="text-light">Welcome back! Your last visit was at ${formattedDate}</p>`;
     }
     
     setCookie("lastVisit", now, 365);
