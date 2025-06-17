@@ -61,40 +61,4 @@ function displayLastVisit() {
 document.addEventListener('DOMContentLoaded', () => {
     checkVisitor();
     displayLastVisit();
-});
-
-const cookieConsent = document.getElementById('cookie-consent');
-const acceptCookies = document.getElementById('accept-cookies');
-
-function setLastVisit() {
-    const now = new Date();
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-    };
-    const formattedDate = now.toLocaleDateString('en-US', options);
-    localStorage.setItem('lastVisit', formattedDate);
-}
-
-function displayLastVisit() {
-    const lastVisit = localStorage.getItem('lastVisit');
-    const lastVisitDiv = document.getElementById('last-visit');
-    
-    if (lastVisitDiv) {
-        if (lastVisit) {
-            lastVisitDiv.textContent = `Your last visit was at ${lastVisit}`;
-        } else {
-            lastVisitDiv.textContent = 'Welcome to my website!';
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    displayLastVisit();
-    setLastVisit();
 }); 
