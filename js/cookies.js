@@ -22,22 +22,18 @@ function checkVisitor() {
     const now = new Date().toISOString();
     
     if (lastVisit === "") {
-        // First time visitor
         document.getElementById('visitor-counter').innerHTML = 
             '<p class="text-light">Welcome! This is your first visit.</p>';
     } else {
-        // Return visitor
         const lastVisitDate = new Date(lastVisit);
         const timeDiff = Math.floor((new Date() - lastVisitDate) / (1000 * 60 * 60 * 24));
         document.getElementById('visitor-counter').innerHTML = 
             `<p class="text-light">Welcome back! Your last visit was ${timeDiff} days ago.</p>`;
     }
     
-    // Update last visit cookie
     setCookie("lastVisit", now, 365);
 }
 
-// Check visitor status when the page loads
 document.addEventListener('DOMContentLoaded', checkVisitor);
 
 const cookieConsent = document.getElementById('cookie-consent');
@@ -60,22 +56,16 @@ function setLastVisit() {
 
 function displayLastVisit() {
     const lastVisit = localStorage.getItem('lastVisit');
-    if (lastVisit) {
-        const lastVisitDiv = document.getElementById('last-visit');
-        if (lastVisitDiv) {
+    const lastVisitDiv = document.getElementById('last-visit');
+    
+    if (lastVisitDiv) {
+        if (lastVisit) {
             lastVisitDiv.textContent = `Your last visit was at ${lastVisit}`;
+        } else {
+            lastVisitDiv.textContent = 'Welcome to my website!';
         }
     }
 }
-
-if (!localStorage.getItem('cookiesAccepted')) {
-    cookieConsent.style.display = 'block';
-}
-
-acceptCookies.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieConsent.style.display = 'none';
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     displayLastVisit();

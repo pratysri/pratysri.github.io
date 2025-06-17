@@ -1,15 +1,17 @@
 function displayTime() {
-    document.getElementById("digital-clock").innerHTML = new Date().toLocaleTimeString();
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('digital-clock').textContent = `${hours}:${minutes}:${seconds}`;
 }
-setInterval(displayTime, 1000);
 
 function initAnalogClock() {
-    var canvas = document.getElementById("analog-clock");
-    var ctx = canvas.getContext("2d");
-    var radius = canvas.height / 2;
+    const canvas = document.getElementById('analog-clock');
+    const ctx = canvas.getContext('2d');
+    const radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    radius *= 0.90;
-    setInterval(drawClock, 1000);
+    radius = radius * 0.90;
 
     function drawClock() {
         drawFace(ctx, radius);
@@ -20,13 +22,9 @@ function initAnalogClock() {
     function drawFace(ctx, radius) {
         ctx.beginPath();
         ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#f8f9fa';
         ctx.fill();
-        var grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
-        grad.addColorStop(0, '#333');
-        grad.addColorStop(0.5, 'white');
-        grad.addColorStop(1, '#333');
-        ctx.strokeStyle = grad;
+        ctx.strokeStyle = '#333';
         ctx.lineWidth = radius * 0.1;
         ctx.stroke();
         ctx.beginPath();
@@ -36,13 +34,11 @@ function initAnalogClock() {
     }
 
     function drawNumbers(ctx, radius) {
-        var ang;
-        var num;
         ctx.font = radius * 0.15 + "px arial";
         ctx.textBaseline = "middle";
         ctx.textAlign = "center";
-        for (num = 1; num <= 12; num++) {
-            ang = num * Math.PI / 6;
+        for (let num = 1; num < 13; num++) {
+            const ang = num * Math.PI / 6;
             ctx.rotate(ang);
             ctx.translate(0, -radius * 0.85);
             ctx.rotate(-ang);
@@ -54,18 +50,18 @@ function initAnalogClock() {
     }
 
     function drawTime(ctx, radius) {
-        var now = new Date();
-        var hour = now.getHours();
-        var minute = now.getMinutes();
-        var second = now.getSeconds();
-
-        hour %= 12;
+        const now = new Date();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const second = now.getSeconds();
+        
+        hour = hour % 12;
         hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
         drawHand(ctx, hour, radius * 0.5, radius * 0.07);
-
+        
         minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
         drawHand(ctx, minute, radius * 0.8, radius * 0.07);
-
+        
         second = (second * Math.PI / 30);
         drawHand(ctx, second, radius * 0.9, radius * 0.02);
     }
@@ -80,8 +76,11 @@ function initAnalogClock() {
         ctx.stroke();
         ctx.rotate(-pos);
     }
+
+    setInterval(drawClock, 1000);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    setInterval(displayTime, 1000);
     initAnalogClock();
 }); 
