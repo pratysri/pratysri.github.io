@@ -50,7 +50,7 @@ _Screenshot: WAPH course page with lab summaries_
 
 #### CSS Template
 
-![Responsive Design](images/screenshots/responsive.png)
+![Responsive Design](images/screenshots/responsive.jpg)
 _Screenshot: Website on mobile device_
 
 - Used Bootstrap via CDN for styling
