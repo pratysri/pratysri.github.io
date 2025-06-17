@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">Pratyush Srivastava</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -37,10 +37,7 @@
                         <a class="nav-link" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="lab2/index.html">Lab 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="waph.html">WAPH</a>
+                        <a class="nav-link" href="waph.html">Lab 2</a>
                     </li>
                 </ul>
             </div>
@@ -60,86 +57,192 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="section-padding">
+    <section id="about" class="py-5">
         <div class="container">
-            <div class="row">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
                 <div class="col-md-4 text-center">
-                    <img src="images/headshot.jpg" alt="Pratyush Srivastava" class="img-fluid rounded-circle profile-img">
-                    <div class="mt-4">
-                        <button onclick="showhideEmail()" class="btn btn-primary">Show My Email</button>
-                        <div id="email" style="display: none;"></div>
-                        <div class="mt-3">
-                            <a href="resume/Pratyush Resume 2025.pdf" class="btn btn-outline-primary" download>
-                                <i class="fas fa-download"></i> Download Resume
-                            </a>
-                        </div>
+                    <img src="images/headshot.jpg" alt="Pratyush Srivastava" class="profile-image mb-4">
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/pratyush-sri" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:srivaspu@mail.uc.edu" class="social-link"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="lead">Welcome to my professional profile! I am a student at the University of Cincinnati studying Web Applications and Programming.</p>
-                    <div class="social-links mt-4">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    </div>
+                    <p class="lead">Computer Science student at the University of Cincinnati passionate about software development, AI/ML, and embedded systems.</p>
+                    <p>I'm currently seeking Co-op opportunities for Fall 2025. With experience in full-stack development, embedded systems, and AI/ML projects, I bring a diverse skill set to any team.</p>
+                    <p>Location: Cincinnati, OH</p>
+                    <p>Contact: +1 5133359007 | srivaspu@mail.uc.edu</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="section-padding bg-light">
+    <section id="education" class="py-5 bg-light">
         <div class="container">
-            <h2 class="section-title text-center">Education</h2>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="education-card">
-                        <h3>University of Cincinnati</h3>
-                        <p class="text-muted">Bachelor of Science in Computer Science</p>
-                        <p>Expected Graduation: 2025</p>
-                    </div>
-                </div>
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <h3>Bachelor of Science, Computer Science</h3>
+                <h4>University of Cincinnati, Ohio</h4>
+                <p class="text-muted">Expected Graduation: May 2027</p>
+                <p><strong>Related Coursework:</strong> Software Engineering, Parallel Computing, OOP, Discrete Structures, AI/ML, Web Dev and Hacking</p>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section-padding">
+    <section id="experience" class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Experience</h2>
+            <h2 class="section-title">Experience</h2>
             <div class="timeline">
-                <!-- Experience items will be added here -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Student Associate</h3>
+                        <h4>DPC, UC Foundation | Cincinnati, OH</h4>
+                        <p class="text-muted">September 2023 - Present</p>
+                        <ul>
+                            <li>Represented the University of Cincinnati by promoting its initiatives, achievements, and innovations</li>
+                            <li>Engaged with over 500 alumni and donors through personalized outreach calls</li>
+                            <li>Built personalized engagement strategies to strengthen alumni relationships</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Embedded Systems Intern</h3>
+                        <h4>Electrocon | Mumbai, India</h4>
+                        <p class="text-muted">May 2024 - August 2024</p>
+                        <ul>
+                            <li>Programmed 10+ ESP8266 devices with environmental sensors and MQTT protocol</li>
+                            <li>Built a cross-platform mobile app using React Native with Supabase backend</li>
+                            <li>Tested and debugged the system for improved device response consistency</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding bg-light">
+    <section id="projects" class="py-5 bg-light">
         <div class="container">
-            <h2 class="section-title text-center">Projects</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="row">
-                <!-- Project cards will be added here -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Real-Time Market Sentiment Analyzer</h3>
+                            <p class="text-muted">May 2025</p>
+                            <ul>
+                                <li>Developed multi-platform sentiment analyzer for 50+ companies using live data streams</li>
+                                <li>Implemented hybrid NLP pipeline using VADER and FinBERT/LLMs</li>
+                                <li>Built dynamic React + Tailwind dashboard with industry-level sentiment cards</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">AI Agents | Automation Project</h3>
+                            <p class="text-muted">January 2025</p>
+                            <ul>
+                                <li>Built and self-hosted AI agents using DeepSeek LLM</li>
+                                <li>Automated 6+ workflows with n8n & Make</li>
+                                <li>Designed AI-driven workflows for conversation processing and analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Home Loan Approval Prediction Model</h3>
+                            <p class="text-muted">May 2024</p>
+                            <ul>
+                                <li>Built ML classifier in Python for loan approval prediction</li>
+                                <li>Trained model on 1,500+ entries dataset</li>
+                                <li>Created interactive dashboards using Matplotlib and Power BI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding">
+    <section id="skills" class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Skills</h2>
+            <h2 class="section-title">Skills</h2>
             <div class="row">
-                <div class="col-md-6">
-                    <h3 class="text-center mb-4">Technical Skills</h3>
-                    <div class="skills-container">
-                        <!-- Technical skills will be added here -->
+                <div class="col-md-4">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">VBA</span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h3 class="text-center mb-4">Soft Skills</h3>
-                    <div class="skills-container">
-                        <!-- Soft skills will be added here -->
+                <div class="col-md-4">
+                    <h3>Technologies</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">React JS</span>
+                        <span class="skill-tag">Node.JS</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Power BI</span>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>Concepts</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Data Science</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Software Development</span>
+                        <span class="skill-tag">Embedded Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Activities & Interests</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Clubs</h3>
+                    <ul>
+                        <li>Bearcats Motorsports</li>
+                        <li>Investment Club</li>
+                        <li>Robotics Club</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Interests</h3>
+                    <ul>
+                        <li>Formula 1</li>
+                        <li>Cars</li>
+                        <li>Filmmaking</li>
+                        <li>Stock Trading</li>
+                        <li>IoT devices</li>
+                        <li>Building PCs</li>
+                        <li>Piano</li>
+                        <li>Chess</li>
+                    </ul>
                 </div>
             </div>
         </div>
