@@ -295,6 +295,7 @@ body {
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
+    background-color: #f8f9fa;
 }
 
 .hand {
@@ -339,6 +340,11 @@ body {
     color: var(--primary-color);
     font-weight: 500;
     margin-top: 1rem;
+}
+
+#xkcd-container {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #xkcd-container img {
